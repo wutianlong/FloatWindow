@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -110,7 +111,20 @@ public class FloatWindowSmallView extends LinearLayout {
 	}
 
 	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+		Log.d("wutl", "---dispatchTouchEvent----1");
+		return super.dispatchTouchEvent(ev);
+	}
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		Log.d("wutl", "---onInterceptTouchEvent----2");
+		return super.onInterceptTouchEvent(ev);
+	}
+
+	@Override
 	public boolean onTouchEvent(MotionEvent event) {
+		Log.d("wutl", "---onTouchEvent---3");
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			isPressed = true;
